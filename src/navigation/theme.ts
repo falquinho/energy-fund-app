@@ -1,26 +1,20 @@
 import { DarkTheme, DefaultTheme, Theme, useTheme } from "@react-navigation/native";
+import { MyTheme, ThemeColors } from "./theme.types";
 
-
-export type ThemeColors = Theme['colors'] & {
-  primaryContrast: string,
-  secondary: string,
-  secondaryContrast: string,
-  disabled: string,
-  disabledContrast: string,
-}
-
-export type MyTheme = Theme & {
-  colors: ThemeColors,
-}
 
 const lightColors: ThemeColors = {
   ...DefaultTheme.colors,
+  background: '#FFFFFF',
   primary: '#770FDF',
   primaryContrast: '#FFFFFF',
   secondary: '#0FDF8F',
   secondaryContrast: '#FFFFFF',
   disabled: '#F4F4F4',
   disabledContrast: '#CFCFCF',
+  card: '#F4F4F4',
+  grayF4: '#F4F4F4',
+  grayCF: '#CFCFCF',
+  grayA0: '#A0A0A0',
 }
 
 const darkColors: ThemeColors = {
@@ -31,9 +25,13 @@ const darkColors: ThemeColors = {
   secondaryContrast: '#FFFFFF',
   disabled: '#F4F4F4',
   disabledContrast: '#CFCFCF',
+  card: '#F4F4F4',
+  grayF4: '#F4F4F4',
+  grayCF: '#CFCFCF',
+  grayA0: '#A0A0A0',
 }
 
-export const myTheme: Theme = {
+export const myTheme: MyTheme = {
   ...DefaultTheme,
   colors: lightColors,
 }
