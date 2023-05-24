@@ -14,13 +14,15 @@ import {
   useColorScheme
 } from 'react-native';
 import RootNavigator from './src/navigation';
+import { myTheme, myThemeDark } from './src/navigation/theme';
 
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
+  const theme = isDarkMode? myThemeDark : myTheme;
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <RootNavigator/>
     </NavigationContainer>
   );
