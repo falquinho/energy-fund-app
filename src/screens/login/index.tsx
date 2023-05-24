@@ -1,16 +1,24 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { MyTextInput } from '../../components/MyTextInput';
-import { TextHeader } from '../../components/TextHeader';
-import { MyButton } from '../../components/MyButton';
-import { TextLabel } from '../../components/TextLabel';
-import { Spacer } from '../../components/Spacer';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { TextStyle, View, ViewStyle } from 'react-native';
-import { MyPasswordInput } from '../../components/MyPasswordInput';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { LabelButton } from '../../components/LabelButton';
+import { MyButton } from '../../components/MyButton';
+import { MyPasswordInput } from '../../components/MyPasswordInput';
+import { MyTextInput } from '../../components/MyTextInput';
+import { Spacer } from '../../components/Spacer';
+import { TextHeader } from '../../components/TextHeader';
+import { TextLabel } from '../../components/TextLabel';
+import { OnboardingStackParamList } from '../../navigation/onboardNavigator';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
+type NavigationProps = NativeStackScreenProps<OnboardingStackParamList, 'Login'>;
 
-const LoginScreen: React.FC = () => {
+const LoginScreen: React.FC<NavigationProps> = ({
+  navigation
+}) => {
+  const handleSignUp = () => navigation.push('SignUp');
+
   return (
     <SafeAreaView style={containerStyle}>
       <TextHeader style={centerText}>Login</TextHeader>
@@ -37,7 +45,8 @@ const LoginScreen: React.FC = () => {
 
       <View style={signupContainer}>
         <TextLabel>Don’t have an account? </TextLabel>
-        <LabelButton onPress={() => {}} label='Sign up here'/>
+        <LabelButton onPress={handleSignUp} label='Sign up'/>
+        <TextLabel> here</TextLabel>
       </View>
       
     </SafeAreaView>
