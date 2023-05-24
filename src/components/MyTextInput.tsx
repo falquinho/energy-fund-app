@@ -6,7 +6,7 @@ import { TextLabel } from './TextLabel';
 
 
 
-type MyTextInputProps = TextInputProps & {
+export type MyTextInputProps = TextInputProps & {
   label?: string,
 }
 
