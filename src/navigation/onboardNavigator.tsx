@@ -2,7 +2,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "../screens/login";
 import SignupScreen from "../screens/signup";
 
-const Stack = createNativeStackNavigator();
+
+export type OnboardingStackParamList = {
+  Login: undefined,
+  SignUp: undefined,
+}
+
+const Stack = createNativeStackNavigator<OnboardingStackParamList>();
 
 export const OnboardingStack: React.FC = () => (
   <Stack.Navigator>

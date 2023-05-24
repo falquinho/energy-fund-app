@@ -3,7 +3,14 @@ import HomeScreen from "../screens/home";
 import AssetDetailsScreen from "../screens/asset_details";
 import PortfolioScreen from "../screens/portfolio";
 
-const Tab = createBottomTabNavigator();
+
+export type LoggedInTabParamList = {
+  Home: undefined,
+  Asset: undefined,
+  Portfolio: undefined,
+}
+
+const Tab = createBottomTabNavigator<LoggedInTabParamList>();
 
 export const LoggedInNavigator: React.FC = () => (
   <Tab.Navigator>

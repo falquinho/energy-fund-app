@@ -5,8 +5,9 @@ import { MyButton } from '../../components/MyButton';
 import { TextLabel } from '../../components/TextLabel';
 import { Spacer } from '../../components/Spacer';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextStyle, ViewStyle } from 'react-native';
+import { TextStyle, View, ViewStyle } from 'react-native';
 import { MyPasswordInput } from '../../components/MyPasswordInput';
+import { LabelButton } from '../../components/LabelButton';
 
 
 const LoginScreen: React.FC = () => {
@@ -25,7 +26,7 @@ const LoginScreen: React.FC = () => {
       <MyPasswordInput
         label='Password'
         placeholder='Minimum 8 characters'
-        value='testtestetestetesttetstetesttesttesttestetesttetetstetsttesttesttesttteststtest'>
+        value='test'>
       </MyPasswordInput>
 
       <Spacer size={38}/>
@@ -33,10 +34,12 @@ const LoginScreen: React.FC = () => {
       <MyButton label='Login'/>
 
       <Spacer size={12}/>
+
+      <View style={signupContainer}>
+        <TextLabel>Don’t have an account? </TextLabel>
+        <LabelButton onPress={() => {}} label='Sign up here'/>
+      </View>
       
-      <TextLabel style={centerText}>
-        Don’t have an account? Sign up here
-      </TextLabel>
     </SafeAreaView>
   )
 }
@@ -47,6 +50,11 @@ const containerStyle: ViewStyle = {
 
 const centerText: TextStyle = {
   textAlign: 'center',
+}
+
+const signupContainer: ViewStyle = {
+  flexDirection: 'row',
+  justifyContent: 'center',
 }
 
 export default LoginScreen;
