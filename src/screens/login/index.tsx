@@ -18,6 +18,11 @@ const LoginScreen: React.FC<NavigationProps> = ({
 }) => {
   const handleSignUp = () => navigation.push('SignUp');
 
+  const handleLogin = () => navigation.reset({
+    index: 0,
+    routes: [{name: 'Main'}],
+  })
+
   return (
     <ScreenView style={containerStyle}>
       <TextHeader style={centerText}>Login</TextHeader>
@@ -38,7 +43,7 @@ const LoginScreen: React.FC<NavigationProps> = ({
 
       <Spacer size={38}/>
 
-      <MyButton label='Login'/>
+      <MyButton label='Login' onPress={handleLogin}/>
 
       <Spacer size={12}/>
 
