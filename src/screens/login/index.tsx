@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { TextStyle, View, ViewStyle } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { LabelButton } from '../../components/LabelButton';
 import { MyButton } from '../../components/MyButton';
 import { MyPasswordInput } from '../../components/MyPasswordInput';
@@ -10,7 +9,8 @@ import { Spacer } from '../../components/Spacer';
 import { TextHeader } from '../../components/TextHeader';
 import { TextLabel } from '../../components/TextLabel';
 import { OnboardingStackParamList } from '../../navigation/onboardNavigator';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { SafeAreaView } from '../../components/SafeAreaView';
+import { ScreenView } from '../../components/ScreenView';
 
 type NavigationProps = NativeStackScreenProps<OnboardingStackParamList, 'Login'>;
 
@@ -20,7 +20,7 @@ const LoginScreen: React.FC<NavigationProps> = ({
   const handleSignUp = () => navigation.push('SignUp');
 
   return (
-    <SafeAreaView style={containerStyle}>
+    <ScreenView style={containerStyle}>
       <TextHeader style={centerText}>Login</TextHeader>
 
       <Spacer size={38}/>
@@ -43,13 +43,14 @@ const LoginScreen: React.FC<NavigationProps> = ({
 
       <Spacer size={12}/>
 
-      <View style={signupContainer}>
-        <TextLabel>Don’t have an account? </TextLabel>
-        <LabelButton onPress={handleSignUp} label='Sign up'/>
-        <TextLabel> here</TextLabel>
-      </View>
-      
-    </SafeAreaView>
+      <TextLabel style={centerText}>
+        Don’t have an account?{' '}
+        <LabelButton onPress={handleSignUp}>
+          Sign up
+        </LabelButton>
+        {' '}here
+      </TextLabel>
+    </ScreenView>
   )
 }
 
@@ -59,11 +60,6 @@ const containerStyle: ViewStyle = {
 
 const centerText: TextStyle = {
   textAlign: 'center',
-}
-
-const signupContainer: ViewStyle = {
-  flexDirection: 'row',
-  justifyContent: 'center',
 }
 
 export default LoginScreen;
