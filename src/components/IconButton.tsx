@@ -6,7 +6,7 @@ import { useMyTheme } from '../navigation/theme';
 
 
 export type IconButtonProps = {
-  onPress: TouchableOpacityProps['onPress'],
+  onPress?: TouchableOpacityProps['onPress'],
   iconName: IconProps['name'],
   style?: ViewStyle, 
   iconStyle?: IconProps['style'],
