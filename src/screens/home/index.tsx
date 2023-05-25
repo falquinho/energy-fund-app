@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { ScreenView } from '../../components/ScreenView';
+import { LearnMoreCard } from './LearnMoreCard';
 
 
 const HomeScreen: React.FC = () => {
   return (
-    null
+    <ScreenView>
+      <LearnMoreCard/>
+    </ScreenView>
   )
 }
 
