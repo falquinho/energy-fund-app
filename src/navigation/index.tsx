@@ -5,7 +5,7 @@ import { LoggedInNavigator } from "./loggedInNavigator";
 const Stack = createStackNavigator();
 
 const RootNavigator: React.FC = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Onboarding" component={OnboardingStack}/>
     <Stack.Screen name="LoggedIn" component={LoggedInNavigator}/>
   </Stack.Navigator>

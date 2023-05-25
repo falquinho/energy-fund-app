@@ -1,16 +1,15 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { TextStyle, View, ViewStyle } from 'react-native';
+import { TextStyle, ViewStyle } from 'react-native';
 import { LabelButton } from '../../components/LabelButton';
 import { MyButton } from '../../components/MyButton';
 import { MyPasswordInput } from '../../components/MyPasswordInput';
 import { MyTextInput } from '../../components/MyTextInput';
+import { ScreenView } from '../../components/ScreenView';
 import { Spacer } from '../../components/Spacer';
 import { TextHeader } from '../../components/TextHeader';
 import { TextLabel } from '../../components/TextLabel';
 import { OnboardingStackParamList } from '../../navigation/onboardNavigator';
-import { SafeAreaView } from '../../components/SafeAreaView';
-import { ScreenView } from '../../components/ScreenView';
 
 type NavigationProps = NativeStackScreenProps<OnboardingStackParamList, 'Login'>;
 

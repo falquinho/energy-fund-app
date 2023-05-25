@@ -1,17 +1,16 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
 import { TextStyle } from 'react-native';
 import { LabelButton } from '../../components/LabelButton';
 import { MyButton } from '../../components/MyButton';
 import { MyPasswordInput } from '../../components/MyPasswordInput';
 import { MyTextInput } from '../../components/MyTextInput';
-import { SafeAreaView } from '../../components/SafeAreaView';
+import { ScreenView } from '../../components/ScreenView';
 import { Spacer } from '../../components/Spacer';
 import { TextHeader } from '../../components/TextHeader';
 import { TextLabel } from '../../components/TextLabel';
-import { CheckboxSection } from './CheckboxSection';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { OnboardingStackParamList } from '../../navigation/onboardNavigator';
-import { ScreenView } from '../../components/ScreenView';
+import { CheckboxSection } from './CheckboxSection';
 
 
 type SignupScreenProps = NativeStackScreenProps<OnboardingStackParamList, 'SignUp'>;
