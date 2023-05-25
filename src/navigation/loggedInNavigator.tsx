@@ -2,20 +2,51 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/home";
 import AssetDetailsScreen from "../screens/asset_details";
 import PortfolioScreen from "../screens/portfolio";
+import Icon from "react-native-vector-icons/Ionicons";
+import { useMyTheme } from "./theme";
 
 
 export type LoggedInTabParamList = {
   Home: undefined,
-  Asset: undefined,
+  Trade: undefined,
   Portfolio: undefined,
 }
 
 const Tab = createBottomTabNavigator<LoggedInTabParamList>();
 
-export const LoggedInNavigator: React.FC = () => (
-  <Tab.Navigator>
-    <Tab.Screen name="Home" component={HomeScreen}/>
-    <Tab.Screen name="Asset" component={AssetDetailsScreen}/>
-    <Tab.Screen name="Portfolio" component={PortfolioScreen}/>
-  </Tab.Navigator>
-)
+export const LoggedInNavigator: React.FC = () => {
+  const { colors } = useMyTheme();
+  return (
+    <Tab.Navigator
+      screenOptions={{ tabBarInactiveTintColor: colors.text }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon name="home" color={color} size={size}/>
+          )
+        }}
+      />
+      <Tab.Screen
+        name="Trade"
+        component={AssetDetailsScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon name="swap-horizontal" color={color} size={size}/>
+          )
+        }}
+      />
+      <Tab.Screen
+        name="Portfolio"
+        component={PortfolioScreen}
+        options={{
+          tabBarIcon: ({focused, color, size}) => (
+            <Icon name="pie-chart" color={color} size={size}/>
+          )
+        }}
+      />
+    </Tab.Navigator>
+  )
+}
