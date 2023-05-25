@@ -4,6 +4,8 @@ import AssetDetailsScreen from "../screens/asset_details";
 import PortfolioScreen from "../screens/portfolio";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useMyTheme } from "./theme";
+import { ProfileHeader } from "../components/ProfileHeader";
+import { FundHeader } from "../components/FundHeader";
 
 
 export type LoggedInTabParamList = {
@@ -18,7 +20,9 @@ export const LoggedInNavigator: React.FC = () => {
   const { colors } = useMyTheme();
   return (
     <Tab.Navigator
-      screenOptions={{ tabBarInactiveTintColor: colors.text }}
+      screenOptions={{
+        tabBarInactiveTintColor: colors.text,
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -26,7 +30,8 @@ export const LoggedInNavigator: React.FC = () => {
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Icon name="home" color={color} size={size}/>
-          )
+          ),
+          header: (props) => <ProfileHeader/>
         }}
       />
       <Tab.Screen
@@ -35,7 +40,10 @@ export const LoggedInNavigator: React.FC = () => {
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Icon name="swap-horizontal" color={color} size={size}/>
-          )
+          ),
+          header: ({navigation}) => (
+            <FundHeader name="Wind Fund" code="WFND" navigation={navigation }/>
+          ),
         }}
       />
       <Tab.Screen
@@ -44,7 +52,8 @@ export const LoggedInNavigator: React.FC = () => {
         options={{
           tabBarIcon: ({focused, color, size}) => (
             <Icon name="pie-chart" color={color} size={size}/>
-          )
+          ),
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
