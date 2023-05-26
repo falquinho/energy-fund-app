@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { MyCheckbox } from '../../components/MyCheckbox'
 import { TextLabel } from '../../components/TextLabel'
 import { LabelButton } from '../../components/LabelButton'
+import { Row } from '../../components/Row'
 
 
 export type CheckboxSectionProps = {
@@ -21,7 +22,7 @@ export const CheckboxSection: React.FC<CheckboxSectionProps> = ({
   value,
 }) => {
   return (
-    <View style={{flexDirection: 'row'}}>
+    <Row>
       <View>
         <MyCheckbox {...{onValueChange, value, disabled}}/>
       </View>
@@ -37,6 +38,6 @@ export const CheckboxSection: React.FC<CheckboxSectionProps> = ({
           </LabelButton>
         </TextLabel>
       </View>
-    </View>
+    </Row>
   )
 }
