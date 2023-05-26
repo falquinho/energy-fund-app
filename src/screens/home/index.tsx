@@ -1,10 +1,10 @@
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { ScreenView } from '../../components/ScreenView';
-import { LearnMoreCard } from './LearnMoreCard';
-import { FundsSection } from './FundsSection';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { LoggedInTabParamList } from '../../navigation/loggedInNavigator';
 import { Spacer } from '../../components/Spacer';
+import { LoggedInTabParamList } from '../../navigation/loggedInNavigator';
+import { FundsSection } from './FundsSection';
+import { LearnMoreCard } from './LearnMoreCard';
 
 
 export type HomeScreenProps = BottomTabScreenProps<LoggedInTabParamList, 'Home'>
