@@ -9,6 +9,7 @@ import { GraphPoint } from "react-native-graph";
 import { graphDataFromFundHistory, graphDataIntervalVariation } from "../utils/graphUtils";
 import { FundPreviewData } from "../types/FundPreviewData";
 import { limitDecimals } from "../utils/mathUtils";
+import { FundInfo } from "../types/FundInfo";
 
 
 
@@ -18,9 +19,9 @@ export interface FundsState {
 
 const initialState = {
   funds: [
-    natureFund,
-    solarFund,
     windFund,
+    solarFund,
+    natureFund,
   ]
 } as FundsState;
 
@@ -40,7 +41,8 @@ export const fundsReducer = fundsSlice.reducer;
 
 export const selectAvailableFundsPreview = (state: ReduxState): Array<FundPreviewData> => {
   return state.funds.funds.map(fund => {
-    const graphPoints = selectFundPreviewGraphData(state);
+    const threshold = Date.now() - mapIntervalToMilis.d
+    const graphPoints = graphDataFromFundHistory(fund.history, threshold);
     const latestValue = limitDecimals(graphPoints[graphPoints.length - 1].value);
     const previewDataVariation = graphDataIntervalVariation(graphPoints);
 
@@ -67,20 +69,6 @@ export const selectSelectedFundData = (state: ReduxState) => {
 
 /**
  * @param state 
- * @returns Graph data from last day of current selected Fund.
- */
-export const selectFundPreviewGraphData = (state: ReduxState) => {
-  const fund = selectSelectedFundData(state);
-  const history = fund?.history || [];
-
-  const threshold = Date.now() - mapIntervalToThreshold.d;
-
-  return graphDataFromFundHistory(history, threshold)
-}
-
-
-/**
- * @param state 
  * @returns Graph data from selected Fund limited to interval set by the user.
  */
 export const selectFundGraphData = (state: ReduxState): Array<GraphPoint> => {
@@ -91,7 +79,7 @@ export const selectFundGraphData = (state: ReduxState): Array<GraphPoint> => {
   const selectedInterval = selectGraphInterval(state);
     
   const threshold = selectedInterval !== 'all'
-    ? Date.now() - mapIntervalToThreshold[selectedInterval]
+    ? Date.now() - mapIntervalToMilis[selectedInterval]
     : 0
   ;
 
@@ -99,10 +87,30 @@ export const selectFundGraphData = (state: ReduxState): Array<GraphPoint> => {
 }
 
 
+export const selectCurrentFundInfo = (state: ReduxState): FundInfo | undefined => {
+  const currFund = selectSelectedFundData(state);
+  
+  if (!currFund)
+    return undefined;
+
+  return ({
+    aum: currFund.aum,
+    close_value: currFund.close_value,
+    code: currFund.code,
+    display_name: currFund.display_name,
+    issued_at: currFund.issued_at,
+    open_value: currFund.open_value,
+    ter: currFund.ter,
+    vintage_end: currFund.vintage_end,
+    vintage_start: currFund.vintage_start,
+  })  
+} 
+
+
 const A_HOUR = 1000 * 60 * 60;
 
 // Values in milliseconds
-const mapIntervalToThreshold = {
+const mapIntervalToMilis = {
   h: A_HOUR,
   d: A_HOUR * 24,
   w: A_HOUR * 24 * 7,
