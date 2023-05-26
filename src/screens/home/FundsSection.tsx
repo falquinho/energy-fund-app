@@ -1,14 +1,13 @@
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import { useSelector } from 'react-redux'
 import { Spacer } from '../../components/Spacer'
 import { TextHeader } from '../../components/TextHeader'
 import { LoggedInTabParamList } from '../../navigation/loggedInNavigator'
 import { selectAvailableFundsPreview } from '../../redux/funds.slice'
-import { useAppDispatch } from '../../redux/hooks'
-import { FundPreviewCard } from './FundPreviewCard'
+import { useAppDispatch, useReduxSelector } from '../../redux/hooks'
 import { setSelectedFund } from '../asset_details/redux'
+import { FundPreviewCard } from './FundPreviewCard'
 
 
 export type FundsSectionProps = {
@@ -18,7 +17,7 @@ export type FundsSectionProps = {
 export const FundsSection: React.FC<FundsSectionProps> = ({
   navigation,
 }) => {
-  const fundsPreviews = useSelector(selectAvailableFundsPreview);
+  const fundsPreviews = useReduxSelector(selectAvailableFundsPreview);
   const dispatch = useAppDispatch();
 
   const handlePress = (fundCode: string) => {
