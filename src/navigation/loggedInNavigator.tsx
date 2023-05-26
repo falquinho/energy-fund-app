@@ -51,7 +51,7 @@ export const LoggedInNavigator: React.FC = () => {
         component={PortfolioScreen}
         options={{
           tabBarIcon: ({focused, color, size}) => (
-            <Icon name="pie-chart" color={color} size={size}/>
+            <Icon name="pie-chart-outline" color={color} size={size}/>
           ),
           headerShown: false,
         }}
