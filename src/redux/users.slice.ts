@@ -29,6 +29,11 @@ const usersSlice = createSlice({
 
 export const usersReducer = usersSlice.reducer;
 
+export const {
+  setUser,
+  clearUserData,
+} = usersSlice.actions;
+
 
 
 export const selectUserData = (state: ReduxState) => (
