@@ -6,6 +6,7 @@ import { TextStyle, View, ViewStyle } from 'react-native'
 import { TextHeader } from '../../components/TextHeader'
 import { GrowthTag } from '../../components/GrowthTag'
 import { limitDecimals } from '../../utils/mathUtils'
+import { Row } from '../../components/Row'
 
 
 export type FundGraphProps = {
@@ -21,7 +22,7 @@ export const FundGraph: React.FC<FundGraphProps> = ({
 
   return (
     <View>
-      <View style={row}>
+      <Row style={row}>
         <View>
           <TextHeader style={textStyle}>
             {`$${limitDecimals(graphPoints[graphPoints.length - 1].value)}`}
@@ -32,7 +33,7 @@ export const FundGraph: React.FC<FundGraphProps> = ({
         <TextHeader style={textStyle}>
           {new Date().getFullYear()}
         </TextHeader>
-      </View>
+      </Row>
       <LineGraph
         points={graphPoints}
         animated={false}
@@ -44,7 +45,6 @@ export const FundGraph: React.FC<FundGraphProps> = ({
 }
 
 const row: ViewStyle = {
-  flexDirection: 'row',
   justifyContent: 'space-between',
   marginBottom: 20,
 }
