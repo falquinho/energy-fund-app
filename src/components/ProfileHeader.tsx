@@ -6,6 +6,7 @@ import { IconButton } from './IconButton';
 import { TextHeader } from './TextHeader';
 import { ThemeColors } from '../navigation/theme.types';
 import { useMyTheme } from '../navigation/theme';
+import { Row } from './Row';
 
 
 export const ProfileHeader: React.FC = () => {
@@ -14,17 +15,16 @@ export const ProfileHeader: React.FC = () => {
   return (
     <HeaderContainer style={row}>
       <IconButton iconName='person-circle-outline' iconStyle={iconStyle}/>
-      <View style={row}>
+      <Row style={row}>
         <TextHeader>Account: $1,457.23</TextHeader>
         <Icon name='chevron-down'/>
-      </View>
+      </Row>
       <IconButton iconName='notifications-outline' iconStyle={iconStyle}/>
     </HeaderContainer>
   )
 }
 
 const row: ViewStyle = {
-  flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
 }

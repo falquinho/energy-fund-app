@@ -5,27 +5,27 @@ import { BackButton } from './BackButton'
 import { HeaderContainer } from './HeaderContainer'
 import { TextHeader } from './TextHeader'
 import { TextMuted } from './TextMuted'
+import { useReduxSelector } from '../redux/hooks'
+import { selectCurrentFundInfo } from '../redux/funds.slice'
 
 
 export type FundHeaderProps = {
-  name: string,
-  code: string,
   navigation: BottomTabNavigationProp<any>,
 }
 
 export const FundHeader: React.FC<FundHeaderProps> = ({
-  name,
-  code,
   navigation,
 }) => {
+  const fundInfo = useReduxSelector(selectCurrentFundInfo);
+
   return (
     <HeaderContainer style={{flexDirection: 'row'}}>
       <View style={flex}>
         <BackButton navigation={navigation}/>
       </View>
       <View style={center}>
-        <TextHeader>{name}</TextHeader>
-        <TextMuted>{code}</TextMuted>
+        <TextHeader>{fundInfo?.display_name || ''}</TextHeader>
+        <TextMuted>{fundInfo?.code || ''}</TextMuted>
       </View>
       <View style={flex}>
       </View>

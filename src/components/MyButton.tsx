@@ -1,7 +1,8 @@
 import React from 'react'
 import { Pressable, PressableProps, TextStyle, ViewStyle } from 'react-native'
-import { ThemeColors, useMyTheme } from '../navigation/theme'
+import { useMyTheme } from '../navigation/theme'
 import { TextContrast } from './TextContrast'
+import { ThemeColors } from '../navigation/theme.types'
 
 
 type MyButtonProps = PressableProps & {
@@ -17,6 +18,7 @@ export const MyButton: React.FC<MyButtonProps> = (props) => {
     label,
     secondary = false,
     disabled = false,
+    outline = false,
   } = props;
 
   return (
@@ -24,7 +26,12 @@ export const MyButton: React.FC<MyButtonProps> = (props) => {
       {...props}
       style={[buildStyle(props, colors), style as ViewStyle]}
     >
-      <TextContrast style={textStyle} secondary={secondary} disabled={disabled as boolean}>
+      <TextContrast
+        style={textStyle}
+        secondary={secondary}
+        disabled={disabled as boolean}
+        outline={outline}
+      >
         {label}
       </TextContrast>
     </Pressable>
@@ -43,8 +50,7 @@ const buildStyle = (
     color = colors.secondary ;
 
   return ({
-    paddingVertical: 16,
-    paddingHorizontal: 32,
+    padding: 16,
     borderRadius: 4,
     flexDirection: 'row',
     alignItems: 'center',
