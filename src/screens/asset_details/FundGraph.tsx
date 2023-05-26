@@ -2,6 +2,10 @@ import React from 'react'
 import { GraphPoint, LineGraph } from 'react-native-graph'
 import { useMyTheme } from '../../navigation/theme'
 import { graphDataIntervalVariation } from '../../utils/graphUtils'
+import { TextStyle, View, ViewStyle } from 'react-native'
+import { TextHeader } from '../../components/TextHeader'
+import { GrowthTag } from '../../components/GrowthTag'
+import { limitDecimals } from '../../utils/mathUtils'
 
 
 export type FundGraphProps = {
@@ -12,15 +16,40 @@ export const FundGraph: React.FC<FundGraphProps> = ({
   graphPoints,
 }) => {
   const { colors } = useMyTheme();
-
   const variation = graphDataIntervalVariation(graphPoints)
 
+
   return (
-    <LineGraph
-      points={graphPoints}
-      animated={true}
-      color="#4484B2"
-      style={{ height: 300 }}
-    />
+    <View>
+      <View style={row}>
+        <View>
+          <TextHeader style={textStyle}>
+            {`$${limitDecimals(graphPoints[graphPoints.length - 1].value)}`}
+          </TextHeader>
+          <GrowthTag growth={variation}/>
+        </View>
+
+        <TextHeader style={textStyle}>
+          {new Date().getFullYear()}
+        </TextHeader>
+      </View>
+      <LineGraph
+        points={graphPoints}
+        animated={false}
+        color={variation >= 0? colors.positive : colors.negative}
+        style={{ height: 300 }}
+      />
+    </View>
   )
+}
+
+const row: ViewStyle = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginBottom: 20,
+}
+
+const textStyle: TextStyle = {
+  fontSize: 24,
+  lineHeight: 30,
 }
