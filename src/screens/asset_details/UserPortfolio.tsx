@@ -9,10 +9,16 @@ import { GrowthTag } from '../../components/GrowthTag'
 import { Spacer } from '../../components/Spacer'
 import { Row } from '../../components/Row'
 import { MyButton } from '../../components/MyButton'
+import { UserFund } from '../../types/UserFund'
+import { ViewStyle } from 'react-native'
 
 
 export const UserPortfolio: React.FC = () => {
   const fundPortfolio = useReduxSelector(selectCurrentFundUserPortfolio);
+
+  const elapsedDays = Math.trunc(
+    (Date.now() - new Date(fundPortfolio?.updated_at || 0).getTime()) / 86400000
+  );
 
   return (
     <View>
@@ -31,15 +37,16 @@ export const UserPortfolio: React.FC = () => {
 
       {!!fundPortfolio && (
         <>
-          <Row>
-            <View>
-              <TextHeader>{fundPortfolio.credits} Credits</TextHeader>
-              <GrowthTag growth={fundPortfolio.variation}/>
-            </View>
-            <TextHeader>
-              ${fundPortfolio.value}
-            </TextHeader>
+          <Row style={row}>
+            <TextHeader>{fundPortfolio.credits} Credits</TextHeader>
+            <TextHeader>${fundPortfolio.value}</TextHeader>
           </Row>
+          <Spacer size={4}/>
+          <Row style={row}>
+            <GrowthTag growth={fundPortfolio.variation}/>
+            <TextMuted>Last purchase {elapsedDays}d ago</TextMuted>
+          </Row>
+          <Spacer size={20}/>
           <Row>
             <MyButton label='Sell' outline style={{flex: 1}} onPress={() => {}}/>
             <Spacer size={10}/>
@@ -49,4 +56,8 @@ export const UserPortfolio: React.FC = () => {
       )}
     </View>
   )
+}
+
+const row: ViewStyle = {
+  justifyContent: 'space-between',
 }
