@@ -8,6 +8,7 @@ import Images from '../../images'
 import { LineGraph } from 'react-native-graph'
 import { useMyTheme } from '../../navigation/theme'
 import { Spacer } from '../../components/Spacer'
+import { Row } from '../../components/Row'
 
 
 
@@ -44,10 +45,10 @@ export const FundPreviewCard: React.FC<FundPreviewCardProps> = ({
         />
         <Spacer size={14}/>
 
-        <View style={row}>
+        <Row style={{ justifyContent: 'space-between' }}>
           <Text >$ {latestValue}</Text>
           <GrowthTag growth={previewDataVariation}/>
-        </View>
+        </Row>
       </FlatCard>
     </TouchableOpacity>
   )
@@ -56,11 +57,6 @@ export const FundPreviewCard: React.FC<FundPreviewCardProps> = ({
 const container: ViewStyle = {
   width: 160,
   height: 160,
-}
-
-const row: ViewStyle = {
-  flexDirection: 'row',
-  justifyContent: 'space-between',
 }
 
 const nameText: TextStyle = {
