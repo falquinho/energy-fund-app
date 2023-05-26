@@ -4,6 +4,9 @@
  */
 const Images = {
   businessStatistics: require('./BusinessStatistics.png'),
+  sunIcon: require('./SunIcon.png'),
+  windIcon: require('./WindIcon.png'),
+  leafIcon: require('./LeafIcon.png'),
 }
 
 export default Images;
