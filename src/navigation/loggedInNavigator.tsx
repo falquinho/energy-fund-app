@@ -42,7 +42,7 @@ export const LoggedInNavigator: React.FC = () => {
             <Icon name="swap-horizontal" color={color} size={size}/>
           ),
           header: ({navigation}) => (
-            <FundHeader name="Wind Fund" code="WFND" navigation={navigation }/>
+            <FundHeader navigation={navigation }/>
           ),
         }}
       />
