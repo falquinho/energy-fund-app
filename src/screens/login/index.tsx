@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
-import { TextStyle, ViewStyle } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, TextStyle, ViewStyle } from 'react-native';
 import { LabelButton } from '../../components/LabelButton';
 import { MyButton } from '../../components/MyButton';
 import { MyPasswordInput } from '../../components/MyPasswordInput';
@@ -10,18 +10,37 @@ import { Spacer } from '../../components/Spacer';
 import { TextHeader } from '../../components/TextHeader';
 import { TextLabel } from '../../components/TextLabel';
 import { OnboardingStackParamList } from '../../navigation/onboardNavigator';
+import { mockUsers } from '../../mock/users';
+import { useAppDispatch } from '../../redux/hooks';
+import { setUser } from '../../redux/users.slice';
 
 type NavigationProps = NativeStackScreenProps<OnboardingStackParamList, 'Login'>;
 
 const LoginScreen: React.FC<NavigationProps> = ({
   navigation
 }) => {
+  const [email, setEmail] = useState('');
+  const dispatch = useAppDispatch();
+
   const handleSignUp = () => navigation.push('SignUp');
 
-  const handleLogin = () => navigation.reset({
-    index: 0,
-    routes: [{name: 'Main'}],
-  })
+  /**
+   * Simulate login by simply searching for a email match on mocked users.
+   * If a user is found update the redux state with the data.
+   * @returns 
+   */
+  const handleLogin = () => {
+    const userData = mockUsers.find(user => user.email === email);
+    if (!userData)
+      return Alert.alert("User not found");
+
+    dispatch(setUser(userData));
+    
+    navigation.reset({
+      index: 0,
+      routes: [{name: 'Main'}],
+    })
+  }
 
   return (
     <ScreenView style={containerStyle}>
@@ -30,8 +49,10 @@ const LoginScreen: React.FC<NavigationProps> = ({
       <Spacer size={38}/>
 
       <MyTextInput
-        label='E-mail'>  
-      </MyTextInput>
+        label='E-mail'
+        value={email}
+        onChangeText={setEmail}
+      />  
 
       <Spacer size={20}/>
 
