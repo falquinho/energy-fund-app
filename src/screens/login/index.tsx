@@ -38,8 +38,7 @@ const LoginScreen: React.FC<NavigationProps> = ({
       <MyPasswordInput
         label='Password'
         placeholder='Minimum 8 characters'
-        value='test'>
-      </MyPasswordInput>
+      />
 
       <Spacer size={38}/>
 
