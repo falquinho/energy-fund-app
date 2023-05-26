@@ -15,6 +15,8 @@ import {
 } from 'react-native';
 import RootNavigator from './src/navigation';
 import { myTheme, myThemeDark } from './src/navigation/theme';
+import { Provider as ReduxProvider } from 'react-redux';
+import reduxStore from './src/redux';
 
 
 const App = () => {
@@ -22,9 +24,11 @@ const App = () => {
   const theme = isDarkMode? myThemeDark : myTheme;
 
   return (
-    <NavigationContainer theme={theme}>
-      <RootNavigator/>
-    </NavigationContainer>
+    <ReduxProvider store={reduxStore}>
+      <NavigationContainer theme={theme}>
+        <RootNavigator/>
+      </NavigationContainer>
+    </ReduxProvider>
   );
 };
 
