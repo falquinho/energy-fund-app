@@ -15,6 +15,8 @@ const lightColors: ThemeColors = {
   grayF4: '#F4F4F4',
   grayCF: '#CFCFCF',
   grayA0: '#A0A0A0',
+  positive: '#0FDF8F',
+  negative: '#EE8688',
 }
 
 const darkColors: ThemeColors = {
@@ -29,6 +31,8 @@ const darkColors: ThemeColors = {
   grayF4: '#F4F4F4',
   grayCF: '#CFCFCF',
   grayA0: '#A0A0A0',
+  positive: '#0FDF8F',
+  negative: '#EE8688',
 }
 
 export const myTheme: MyTheme = {

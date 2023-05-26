@@ -7,6 +7,8 @@ export type ThemeColors = Theme['colors'] & {
   secondaryContrast: string,
   disabled: string,
   disabledContrast: string,
+  positive: string,
+  negative: string,
   grayF4: '#F4F4F4',
   grayCF: '#CFCFCF',
   grayA0: '#A0A0A0',
