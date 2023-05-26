@@ -7,6 +7,7 @@ import { Text } from './Text';
 type TextContrastProps = TextProps & {
   secondary?: boolean,
   disabled?: boolean,
+  outline?: boolean,
 }
 
 /**
@@ -17,11 +18,14 @@ type TextContrastProps = TextProps & {
 export const TextContrast: React.FC<TextContrastProps> = (props) => {
   const { colors } = useMyTheme();
 
-  const color = props.disabled
-    ? colors.disabledContrast 
-    : props.secondary
-      ? colors.secondaryContrast
-      : colors.primaryContrast;
+  let color = colors.primaryContrast;
+   
+  if (props.disabled)
+    color = colors.disabled;
+  else if (props.secondary)
+    color = props.outline? colors.secondary : colors.secondaryContrast;
+  else
+    color = props.outline? colors.primary : colors.primaryContrast;
 
   return (
     <Text {...props} style={[{color}, props.style]}/>
