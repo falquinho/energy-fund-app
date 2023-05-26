@@ -5,6 +5,7 @@ import { useMyTheme } from '../../navigation/theme';
 import { selectFundGraphData } from '../../redux/funds.slice';
 import { useReduxSelector } from '../../redux/hooks';
 import { IntervalSelect } from './IntervalSelect';
+import { InfoSection } from './InfoSection';
 
 
 const AssetDetailsScreen: React.FC = () => {
@@ -14,6 +15,7 @@ const AssetDetailsScreen: React.FC = () => {
   return (
     <ScreenView>
       <IntervalSelect/>
+      <InfoSection/>
     </ScreenView>
   )
 }
