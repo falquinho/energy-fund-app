@@ -7,6 +7,7 @@ import { TextLabel } from '../../components/TextLabel';
 import { IconButton } from '../../components/IconButton';
 import { Text } from '../../components/Text';
 import { Spacer } from '../../components/Spacer';
+import { Row } from '../../components/Row';
 
 
 export const InfoSection: React.FC = () => {
@@ -19,7 +20,7 @@ export const InfoSection: React.FC = () => {
     <View>
       <TextHeader>Info & Stats</TextHeader>
       <Spacer size={20}/>
-      <View style={{flexDirection: 'row'}}>
+      <Row>
         <View style={{flex: 1}}>
           <InfoCell label='AUM' value={`$${info.aum}m`}/>
           <Spacer size={18}/>
@@ -38,7 +39,7 @@ export const InfoSection: React.FC = () => {
           <Spacer size={18}/>
           <InfoCell label='Price at Open' value={`$${info.open_value}`}/>
         </View>
-      </View>
+      </Row>
     </View>
   )
 }
@@ -56,10 +57,10 @@ export const InfoCell: React.FC<{
 }) => {
   return (
     <View>
-      <View style={{ flexDirection: 'row' }}>
+      <Row>
         <TextLabel>{label} </TextLabel>
         <IconButton iconName='information-circle-outline' onPress={onPress} iconStyle={{fontSize: 12}}/>
-      </View>
+      </Row>
       <Spacer size={10}/>
       <Text>{value}</Text>
     </View>

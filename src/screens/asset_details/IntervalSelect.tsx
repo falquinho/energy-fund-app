@@ -5,6 +5,7 @@ import { useMyTheme } from '../../navigation/theme';
 import { ThemeColors } from '../../navigation/theme.types';
 import { useAppDispatch, useReduxSelector } from '../../redux/hooks';
 import { AssetScreenReduxState, selectGraphInterval, setGraphInterval } from './redux';
+import { Row } from '../../components/Row';
 
 
 export const IntervalSelect: React.FC = () => {
@@ -17,7 +18,7 @@ export const IntervalSelect: React.FC = () => {
   }
 
   return (
-    <View style={mainStyle}>
+    <Row style={mainStyle}>
       {intervals.map(item => {
         const selected = selectedInterval === item.key;
 
@@ -34,7 +35,7 @@ export const IntervalSelect: React.FC = () => {
           </TouchableOpacity>
         );
       })}
-    </View>
+    </Row>
   )
 }
 
@@ -48,7 +49,6 @@ const intervals: Array<{key: AssetScreenReduxState['graphInterval'], label: stri
 ]
 
 const mainStyle: ViewStyle = {
-  flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
 }
