@@ -1,5 +1,4 @@
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack/lib/typescript/src/types';
+import { NavigationProp } from '@react-navigation/native';
 import React from 'react';
 import { TextStyle } from 'react-native';
 import { useMyTheme } from '../navigation/theme';
@@ -8,7 +7,7 @@ import { IconButton } from './IconButton';
 
 
 export type BackButtonProps = {
-  navigation: BottomTabNavigationProp<any> | NativeStackNavigationProp<any>,
+  navigation: NavigationProp<any>,
 }
 
 /**
