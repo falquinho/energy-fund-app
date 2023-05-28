@@ -21,7 +21,7 @@ export const TextContrast: React.FC<TextContrastProps> = (props) => {
   let color = colors.primaryContrast;
    
   if (props.disabled)
-    color = colors.disabled;
+    color = colors.disabledContrast;
   else if (props.secondary)
     color = props.outline? colors.secondary : colors.secondaryContrast;
   else
