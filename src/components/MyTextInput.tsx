@@ -1,18 +1,22 @@
 import React from 'react'
-import { TextInput, TextInputProps, TextStyle, ViewStyle } from 'react-native'
+import { TextInput, TextInputProps, TextStyle, View, ViewStyle } from 'react-native'
 import { useMyTheme } from '../navigation/theme'
 import { ThemeColors } from '../navigation/theme.types';
 import { TextLabel } from './TextLabel';
+import { FlatCard } from './FlatCard';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { FormErrorMessage } from './FormErrorMessage';
 
 
 
 export type MyTextInputProps = TextInputProps & {
   label?: string,
+  error?: string,
 }
 
 export const MyTextInput: React.FC<MyTextInputProps> = (props) => {
   const { colors } = useMyTheme();
-  const { label } = props;
+  const { label, error = '' } = props;
 
   return (
     <>
@@ -26,6 +30,7 @@ export const MyTextInput: React.FC<MyTextInputProps> = (props) => {
         style={[inputStyle(colors), props.style]}
         placeholderTextColor={colors.grayCF}
       />
+      <FormErrorMessage error={error}/>
     </>
   )
 }
