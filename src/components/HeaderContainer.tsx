@@ -26,5 +26,6 @@ const baseStyle = (colors: ThemeColors, insets: EdgeInsets): ViewStyle => ({
   paddingTop: 20 + insets.top,
   paddingBottom: 20,
   borderBottomWidth: 1,
-  borderBottomColor: colors.grayF4
+  borderBottomColor: colors.grayF4,
+  backgroundColor: colors.background,
 })
