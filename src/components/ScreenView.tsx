@@ -20,7 +20,7 @@ export const ScreenView: React.FC<ScreenViewProps> = (props) => {
   return (
     <KeyboardAvoidingView
       style={{ height: "100%", paddingBottom: avoidBottom? bottom : 0 }}
-      behavior='position'
+      behavior='height'
     >
       <ScrollView {...props} style={[style, props.style]} contentInset={{bottom}}/>
     </KeyboardAvoidingView>
