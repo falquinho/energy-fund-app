@@ -45,7 +45,7 @@ const SignupScreen: React.FC<SignupScreenProps> = ({
   } 
 
   return (
-    <ScreenView>
+    <ScreenView avoidBottom>
       <TextHeader style={headerStyle}>
         Create your account
       </TextHeader>
