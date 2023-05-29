@@ -1,32 +1,26 @@
 import React from 'react'
 import { View } from 'react-native'
-import { MyCheckbox } from '../../components/MyCheckbox'
+import { MyCheckbox, MyCheckboxProps } from '../../components/MyCheckbox'
 import { TextLabel } from '../../components/TextLabel'
 import { LabelButton } from '../../components/LabelButton'
 import { Row } from '../../components/Row'
 
 
-export type CheckboxSectionProps = {
-  onValueChange?: (value: boolean) => void,
-  value?: boolean,
-  disabled?: boolean,
+export type CheckboxSectionProps = MyCheckboxProps & {
   onPrivacyPress?: () => void, 
   onTermsPress?: () => void, 
 }
 
-export const CheckboxSection: React.FC<CheckboxSectionProps> = ({
-  disabled,
-  onPrivacyPress,
-  onTermsPress,
-  onValueChange,
-  value,
-}) => {
+export const CheckboxSection: React.FC<CheckboxSectionProps> = (props) => {
+  const {
+    onPrivacyPress,
+    onTermsPress,
+  } = props;
+
   return (
-    <Row>
-      <View>
-        <MyCheckbox {...{onValueChange, value, disabled}}/>
-      </View>
-      <View style={{flex: 1, marginLeft: 10}}>
+    <MyCheckbox
+      {...props}
+      label={(
         <TextLabel>
           {"I am over 18 years of age and I have read and agree to the "}
           <LabelButton onPress={onTermsPress}>
@@ -37,7 +31,7 @@ export const CheckboxSection: React.FC<CheckboxSectionProps> = ({
             Privacy policy
           </LabelButton>
         </TextLabel>
-      </View>
-    </Row>
+      )}
+    />
   )
 }
